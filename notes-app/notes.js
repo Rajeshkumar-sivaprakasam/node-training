@@ -38,7 +38,21 @@ const loadNotes = () => {
   }
 };
 
+const deleteNote = (title) => {
+  const notes = loadNotes();
+  const notesToKeep = notes.filter((note) => {
+    return note.title !== title;
+  });
+  if (notes.length > notesToKeep.length) {
+    saveNotes(notesToKeep);
+    console.log("Note deleted successfully!");
+  } else {
+    console.log("Note Not found!");
+  }
+};
+
 module.exports = {
   getNotes: getNotes,
   addNote: addNote,
+  deleteNote: deleteNote,
 };

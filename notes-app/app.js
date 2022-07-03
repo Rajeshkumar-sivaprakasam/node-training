@@ -57,9 +57,16 @@ yargs.command({
 // remove command
 yargs.command({
   command: "remove",
-  desc: "start file/rpc server",
-  handler: function () {
-    console.log("notes removed!");
+  desc: "remove",
+  builder: {
+    title: {
+      describe: "delete element",
+      demandOption: true,
+      type: "string",
+    },
+  },
+  handler: function (argv) {
+    notes.deleteNote(argv.title);
   },
 });
 //list command
