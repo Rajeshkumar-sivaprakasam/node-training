@@ -9,6 +9,15 @@
 
 // task 2
 
-const getFunc = require("./notes");
+// const getFunc = require("./notes");
 
-console.log(getFunc());
+// console.log(getFunc());
+
+// task 3 color printing
+
+// const chalk = require("chalk");
+import chalk from "chalk";
+
+console.log(chalk.green("Success!"));
+console.log(chalk.green.bold("Success!"));
+console.log(chalk.green.bold.underline("Success!"));
