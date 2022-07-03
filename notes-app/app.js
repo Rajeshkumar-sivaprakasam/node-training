@@ -17,7 +17,7 @@
 
 // const chalk = require("chalk");
 // import chalk from "chalk";
-import validator from "validator";
+const validator =require("validator");
 
 // console.log(chalk.green("Success!"));
 // console.log(chalk.green.bold("Success!"));
@@ -32,8 +32,8 @@ console.log(validator.isEmail("ni@hsfc.com"));
 //   console.log("Removing Notes!");
 // }
 
-import yargs from "yargs";
-// const yargs = require("yargs");
+// import yargs from "yargs";
+const yargs = require("yargs");
 // add command
 // yargs.command({
 //   command: "start",
