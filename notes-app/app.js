@@ -16,10 +16,29 @@
 // task 3 color printing
 
 // const chalk = require("chalk");
-import chalk from "chalk";
+// import chalk from "chalk";
 import validator from "validator";
 
-console.log(chalk.green("Success!"));
-console.log(chalk.green.bold("Success!"));
-console.log(chalk.green.bold.inverse.underline("Success!"));
+// console.log(chalk.green("Success!"));
+// console.log(chalk.green.bold("Success!"));
+// console.log(chalk.green.bold.inverse.underline("Success!"));
 console.log(validator.isEmail("ni@hsfc.com"));
+
+// cmd line args
+// const cmd = process.argv[2];
+// if (cmd == "add") {
+//   console.log("Adding Notes!");
+// } else if (cmd == "remove") {
+//   console.log("Removing Notes!");
+// }
+
+import yargs from "yargs";
+// const yargs = require("yargs");
+// add command
+// yargs.command({
+//   command: "start",
+//   desc: "start file/rpc server",
+//   handler: function () {
+//     console.log("rajesh");
+//   },
+// });
