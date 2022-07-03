@@ -17,7 +17,7 @@
 
 // const chalk = require("chalk");
 // import chalk from "chalk";
-const validator =require("validator");
+const validator = require("validator");
 
 // console.log(chalk.green("Success!"));
 // console.log(chalk.green.bold("Success!"));
@@ -35,10 +35,36 @@ console.log(validator.isEmail("ni@hsfc.com"));
 // import yargs from "yargs";
 const yargs = require("yargs");
 // add command
-// yargs.command({
-//   command: "start",
-//   desc: "start file/rpc server",
-//   handler: function () {
-//     console.log("rajesh");
-//   },
-// });
+yargs.command({
+  command: "add",
+  desc: "start file/rpc server",
+  handler: function () {
+    console.log("notes added!");
+  },
+});
+// remove command
+yargs.command({
+  command: "remove",
+  desc: "start file/rpc server",
+  handler: function () {
+    console.log("notes removed!");
+  },
+});
+//list command
+yargs.command({
+  command: "list",
+  desc: "start file/rpc server",
+  handler: function () {
+    console.log("list of notes added!");
+  },
+});
+//delete command
+yargs.command({
+  command: "delete",
+  desc: "start file/rpc server",
+  handler: function () {
+    console.log("Notes deleted!");
+  },
+});
+
+console.log(yargs.argv); // without this nothing gonna work
