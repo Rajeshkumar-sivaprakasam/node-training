@@ -37,9 +37,16 @@ const yargs = require("yargs");
 // add command
 yargs.command({
   command: "add",
-  desc: "start file/rpc server",
-  handler: function () {
-    console.log("notes added!");
+  desc: "add",
+  builder: {
+    body: {
+      describe: "body of our page",
+      demandOption: true,
+      type: "string",
+    },
+  },
+  handler: function (argv) {
+    console.log("notes added!", argv);
   },
 });
 // remove command
@@ -67,4 +74,5 @@ yargs.command({
   },
 });
 
-console.log(yargs.argv); // without this nothing gonna work
+// console.log(yargs.argv); // without this nothing gonna work
+yargs.parse();
