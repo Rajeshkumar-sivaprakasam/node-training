@@ -17,7 +17,9 @@
 
 // const chalk = require("chalk");
 import chalk from "chalk";
+import validator from "validator";
 
 console.log(chalk.green("Success!"));
 console.log(chalk.green.bold("Success!"));
-console.log(chalk.green.bold.underline("Success!"));
+console.log(chalk.green.bold.inverse.underline("Success!"));
+console.log(validator.isEmail("ni@hsfc.com"));
