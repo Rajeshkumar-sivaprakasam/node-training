@@ -39,6 +39,11 @@ yargs.command({
   command: "add",
   desc: "add",
   builder: {
+    title: {
+      describe: "Title of our page",
+      demandOption: true,
+      type: "string",
+    },
     body: {
       describe: "body of our page",
       demandOption: true,
@@ -46,7 +51,8 @@ yargs.command({
     },
   },
   handler: function (argv) {
-    console.log("notes added!", argv);
+    console.log("Title:", argv.title);
+    console.log("Body:", argv.body);
   },
 });
 // remove command
