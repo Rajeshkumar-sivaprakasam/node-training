@@ -9,7 +9,7 @@
 
 // task 2
 
-// const getFunc = require("./notes");
+const notes = require("./notes");
 
 // console.log(getFunc());
 
@@ -17,12 +17,12 @@
 
 // const chalk = require("chalk");
 // import chalk from "chalk";
-const validator = require("validator");
+// const validator = require("validator");
 
 // console.log(chalk.green("Success!"));
 // console.log(chalk.green.bold("Success!"));
 // console.log(chalk.green.bold.inverse.underline("Success!"));
-console.log(validator.isEmail("ni@hsfc.com"));
+// console.log(validator.isEmail("ni@hsfc.com"));
 
 // cmd line args
 // const cmd = process.argv[2];
@@ -51,8 +51,7 @@ yargs.command({
     },
   },
   handler: function (argv) {
-    console.log("Title:", argv.title);
-    console.log("Body:", argv.body);
+    notes.addNote(argv.title, argv.body);
   },
 });
 // remove command
