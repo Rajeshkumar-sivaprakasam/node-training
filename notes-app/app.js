@@ -50,7 +50,7 @@ yargs.command({
       type: "string",
     },
   },
-  handler: function (argv) {
+  handler(argv) {
     notes.addNote(argv.title, argv.body);
   },
 });
@@ -65,7 +65,7 @@ yargs.command({
       type: "string",
     },
   },
-  handler: function (argv) {
+  handler(argv) {
     notes.deleteNote(argv.title);
   },
 });
@@ -73,7 +73,7 @@ yargs.command({
 yargs.command({
   command: "list",
   desc: "start file/rpc server",
-  handler: function () {
+  handler() {
     console.log("list of notes added!");
   },
 });
@@ -81,7 +81,7 @@ yargs.command({
 yargs.command({
   command: "delete",
   desc: "start file/rpc server",
-  handler: function () {
+  handler() {
     console.log("Notes deleted!");
   },
 });

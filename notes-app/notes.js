@@ -1,15 +1,11 @@
 const fs = require("fs");
 
-const getNotes = () => {
-  return "Your Notes......";
-};
+const getNotes = () => "Your Notes......";
 
 const addNote = (title, body) => {
   const notes = loadNotes();
 
-  const duplicate = notes.filter((note) => {
-    return note.title === title;
-  });
+  const duplicate = notes.filter((note) => note.title === title);
   if (duplicate.length === 0) {
     notes.push({
       title: title,
@@ -40,9 +36,7 @@ const loadNotes = () => {
 
 const deleteNote = (title) => {
   const notes = loadNotes();
-  const notesToKeep = notes.filter((note) => {
-    return note.title !== title;
-  });
+  const notesToKeep = notes.filter((note) => note.title !== title);
   if (notes.length > notesToKeep.length) {
     saveNotes(notesToKeep);
     console.log("Note deleted successfully!");
