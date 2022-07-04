@@ -72,9 +72,9 @@ yargs.command({
 //list command
 yargs.command({
   command: "list",
-  desc: "start file/rpc server",
+  desc: "list of notes!",
   handler() {
-    console.log("list of notes added!");
+    notes.listNotes();
   },
 });
 //delete command

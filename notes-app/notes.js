@@ -34,6 +34,11 @@ const loadNotes = () => {
   }
 };
 
+const listNotes = () => {
+  const notes = loadNotes();
+  notes.map((note) => console.log(note.title));
+};
+
 const deleteNote = (title) => {
   const notes = loadNotes();
   const notesToKeep = notes.filter((note) => note.title !== title);
@@ -49,4 +54,5 @@ module.exports = {
   getNotes: getNotes,
   addNote: addNote,
   deleteNote: deleteNote,
+  listNotes: listNotes,
 };
