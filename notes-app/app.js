@@ -54,6 +54,22 @@ yargs.command({
     notes.addNote(argv.title, argv.body);
   },
 });
+
+// read command
+yargs.command({
+  command: "read",
+  desc: "read",
+  builder: {
+    title: {
+      describe: "Title of our page",
+      demandOption: true,
+      type: "string",
+    },
+  },
+  handler(argv) {
+    notes.readNote(argv.title);
+  },
+});
 // remove command
 yargs.command({
   command: "remove",
@@ -75,14 +91,6 @@ yargs.command({
   desc: "list of notes!",
   handler() {
     notes.listNotes();
-  },
-});
-//delete command
-yargs.command({
-  command: "delete",
-  desc: "start file/rpc server",
-  handler() {
-    console.log("Notes deleted!");
   },
 });
 

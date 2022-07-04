@@ -39,6 +39,16 @@ const listNotes = () => {
   notes.map((note) => console.log(note.title));
 };
 
+const readNote = (title) => {
+  const notes = loadNotes();
+  const foundNotes = notes.find((note) => note.title === title);
+  if (foundNotes) {
+    console.log(`Title:${foundNotes.title} body:${foundNotes.body}`);
+  } else {
+    console.log("No note Found!");
+  }
+};
+
 const deleteNote = (title) => {
   const notes = loadNotes();
   const notesToKeep = notes.filter((note) => note.title !== title);
@@ -55,4 +65,5 @@ module.exports = {
   addNote: addNote,
   deleteNote: deleteNote,
   listNotes: listNotes,
+  readNote: readNote,
 };
