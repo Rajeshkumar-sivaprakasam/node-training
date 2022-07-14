@@ -1,0 +1,19 @@
+{
+  "type": "Feature",
+  "query": ["los", "angles"],
+  "features": [
+    {
+      "id": "place1",
+      "type": "Feature",
+      "place_type": ["place"],
+      "relevance": 1,
+      "properties": {
+        "wikidata": "Q65"
+      },
+      "text": "Los Angles",
+      "place_name": "Los Angles, California, United States",
+      "bbox": [-118, 33, -118, 34],
+      "center": [-118, 33]
+    }
+  ]
+}
