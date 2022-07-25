@@ -50,6 +50,11 @@ app.get("/weather", (req, res) => {
 	});
 });
 
+//unmatched route && it should be last one
+app.get('*',(req,res)=>{
+	res.send('Page Not Found!')
+})
+
 app.listen(3000, () => {
 	console.log("You server is running on 3000");
 });
