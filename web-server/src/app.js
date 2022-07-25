@@ -41,6 +41,13 @@ app.get("/help", (req, res) => {
 
 //weather
 app.get("/weather", (req, res) => {
+	
+	if (!req.query.address) {
+		return res.send({
+			error: "Address is missing!",
+		});
+	}
+	console.log(req.query, "	req.query");
 	res.send({
 		forcast: "cool",
 		location: {
