@@ -2,10 +2,14 @@ const express = require("express");
 const path = require("path");
 const app = express();
 const pathfile = path.join(__dirname, "../public");
+const viewpath = path.join(__dirname, "../templates");
 
 //returning a static file
 app.use(express.static(pathfile));
+
+//views set to our app
 app.set("view engine", "hbs"); //hbs setup //Dynamic web pages
+app.set("views", viewpath);
 
 app.get("", (req, res) => {
 	res.render("index", {
@@ -22,6 +26,13 @@ app.get("", (req, res) => {
 app.get("/about", (req, res) => {
 	res.render("about", {
 		title: "About Page",
+		author: "Rajesh",
+	});
+});
+//help
+app.get("/help", (req, res) => {
+	res.render("about", {
+		title: "Help Page",
 		author: "Rajesh",
 	});
 });
