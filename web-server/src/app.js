@@ -5,15 +5,25 @@ const pathfile = path.join(__dirname, "../public");
 
 //returning a static file
 app.use(express.static(pathfile));
+app.set("view engine", "hbs"); //hbs setup //Dynamic web pages
 
-// app.get("", (req, res) => {
-// 	res.send("Hello Express!");
-// });
-
+app.get("", (req, res) => {
+	res.render("index", {
+		title: "index",
+		author: "Rajesh",
+	});
+});
 
 //about
+// app.get("/about", (req, res) => {
+// 	res.send("<h1>About Page!</h1>");
+// });
+//about
 app.get("/about", (req, res) => {
-	res.send("<h1>About Page!</h1>");
+	res.render("about", {
+		title: "About Page",
+		author: "Rajesh",
+	});
 });
 
 //weather
