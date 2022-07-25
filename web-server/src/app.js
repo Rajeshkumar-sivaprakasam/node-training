@@ -1,10 +1,15 @@
 const express = require("express");
-
+const path = require("path");
 const app = express();
+const pathfile = path.join(__dirname, "../public");
 
-app.get("", (req, res) => {
-	res.send("Hello Express!");
-});
+//returning a static file
+app.use(express.static(pathfile));
+
+// app.get("", (req, res) => {
+// 	res.send("Hello Express!");
+// });
+
 
 //about
 app.get("/about", (req, res) => {
