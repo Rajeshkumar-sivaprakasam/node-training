@@ -1,27 +1,28 @@
+//nodemon src/app.js -e js,hbs (command to nodemon watch other extension files)
 const express = require("express");
 const path = require("path");
+const hbs = require("hbs");
+
 const app = express();
-const pathfile = path.join(__dirname, "../public");
-const viewpath = path.join(__dirname, "../templates");
+const pathFile = path.join(__dirname, "../public");
+const viewPath = path.join(__dirname, "../templates/views");
+const partialPath = path.join(__dirname, "../templates/partials");
 
 //returning a static file
-app.use(express.static(pathfile));
+app.use(express.static(pathFile));
 
 //views set to our app
 app.set("view engine", "hbs"); //hbs setup //Dynamic web pages
-app.set("views", viewpath);
+app.set("views", viewPath);
+hbs.registerPartials(partialPath);
 
-app.get("", (req, res) => {
+app.get("/", (req, res) => {
 	res.render("index", {
-		title: "index",
+		title: "Index Page",
 		author: "Rajesh",
 	});
 });
 
-//about
-// app.get("/about", (req, res) => {
-// 	res.send("<h1>About Page!</h1>");
-// });
 //about
 app.get("/about", (req, res) => {
 	res.render("about", {
@@ -29,6 +30,7 @@ app.get("/about", (req, res) => {
 		author: "Rajesh",
 	});
 });
+
 //help
 app.get("/help", (req, res) => {
 	res.render("about", {
