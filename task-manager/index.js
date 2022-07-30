@@ -2,9 +2,10 @@ const express = require("express");
 const User = require("./model/user");
 const Task = require("./model/task");
 require("./db/mongoose");
+
 const app = express();
 const port = process.env.PORT || 3000;
-console.log(User, "   ", Task);
+
 app.use(express.json());
 
 app.post("/users", (req, res) => {
