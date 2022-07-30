@@ -77,6 +77,55 @@ app.get("/tasks/:id", async (req, res) => {
   }
 });
 
+app.patch("/users/:id", async (req, res) => {
+  const updates = Object.keys(req.body);
+  console.log(updates, "up");
+  const allowedUpdated = ["name", "email", "age", "password"];
+  const isValideUpdate = updates.every((update) =>
+    allowedUpdated.includes(update)
+  );
+  if (!isValideUpdate) {
+    return res.status(500).send({ error: "send a proper input" });
+  }
+  try {
+    const user = User.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true,
+    });
+    if (!user) {
+      return res.status(404).send();
+    }
+  } catch (e) {
+    res.status.send(e);
+  }
+
+  res.status(200).send({ success: true });
+});
+
+app.patch("/tasks/:id", async (req, res) => {
+  const updates = Object.keys(req.body);
+  console.log(updates, "up");
+  const allowedUpdated = ["discription", "isCompleted"];
+  const isValideUpdate = updates.every((update) =>
+    allowedUpdated.includes(update)
+  );
+  if (!isValideUpdate) {
+    return res.status(500).send({ error: "send a proper input" });
+  }
+  try {
+    const task = Task.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true,
+    });
+    if (!task) {
+      return res.status(404).send();
+    }
+  } catch (e) {
+    res.status.send(e);
+  }
+  res.status(200).send({ success: true });
+});
+
 app.listen(port, () => {
   console.log("Server is up on port " + port);
 });
