@@ -126,6 +126,30 @@ app.patch("/tasks/:id", async (req, res) => {
   res.status(200).send({ success: true });
 });
 
+app.delete("/tasks/:id", async (req, res) => {
+  try {
+    const task = Task.findByIdAndDelete(req.params.id);
+    if (!task) {
+      return res.status(404).send();
+    }
+  } catch (e) {
+    res.status.send(e);
+  }
+  res.status(200).send({ success: true });
+});
+
+app.delete("/users/:id", async (req, res) => {
+  try {
+    const user = User.findByIdAndDelete(req.params.id);
+    if (!user) {
+      return res.status(404).send();
+    }
+  } catch (e) {
+    res.status.send(e);
+  }
+  res.status(200).send({ success: true });
+});
+
 app.listen(port, () => {
   console.log("Server is up on port " + port);
 });
