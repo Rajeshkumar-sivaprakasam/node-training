@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const User = require("../model/user");
 const jwt = require("jsonwebtoken");
+const auth = require("../middleware/auth");
 
 router.post("/users/login", async (req, res) => {
   try {
@@ -10,21 +11,34 @@ router.post("/users/login", async (req, res) => {
       req.body.password
     );
     const token = await user.generateAuthToken();
-    console.log("token", token);
     res.send({ user, token });
   } catch (e) {
     res.status(400).send(e);
   }
 });
 
-router.get("/users", async (req, res) => {
+router.post("/users/logout", auth, async (req, res) => {
   try {
-    const users = await User.find({});
-    const token = await user.generateAuthToken();
-    res.status(200).send({ users, token });
-  } catch {
-    res.status(500).send(e);
+    req.user.tokens = req.user.tokens.filter((token) => {
+      return token.token !== req.token;
+    });
+    await req.user.save();
+
+    res.send();
+  } catch (e) {
+    res.status(500).send();
   }
+});
+
+router.get("/users/me", auth, async (req, res) => {
+  // try {
+  //   const users = await User.find({});
+  //   const token = await user.generateAuthToken();
+  //   res.status(200).send({ users, token });
+  // } catch {
+  //   res.status(500).send(e);
+  // }
+  res.send(req.user);
 });
 
 router.get("/users/:id", async (req, res) => {
