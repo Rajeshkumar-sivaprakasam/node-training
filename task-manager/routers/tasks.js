@@ -3,6 +3,9 @@ const router = express.Router();
 const Task = require("../model/task");
 const auth = require("../middleware/auth");
 
+//GET /tasks ? completed= true
+//GET /tasks ? limit= 2 & skip=2
+
 router.get("/tasks", auth, async (req, res) => {
   const match = {};
   if (req.query.completed) {
@@ -14,6 +17,10 @@ router.get("/tasks", auth, async (req, res) => {
       .populate({
         path: "tasks",
         match,
+        options: {
+          limit: parseInt(req.query.limit),
+          skip: parseInt(req.query.skip),
+        },
       })
       .execPopoulate();
     res.status(200).send(req.user.tasks);
