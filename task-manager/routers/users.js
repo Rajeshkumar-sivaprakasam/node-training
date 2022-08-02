@@ -8,12 +8,12 @@ const multer = require("multer");
 const upload = multer({
   dest: "images",
   limits: {
-    fileSize: 200000,
+    fileSize: 2000000,
   },
   fileFilter(req, file, cb) {
     // if (!file.originalname.endsWith(".pdf")) {
-    if (!file.originalname.match(/\.(doc|docx)$/)) {
-      return cb(new Error("Please upload doc"));
+    if (!file.originalname.match(/\.(png|jpeg|jpg)$/)) {
+      return cb(new Error("Please upload Image"));
     }
     cb(undefined, true);
   },
