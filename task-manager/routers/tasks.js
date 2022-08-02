@@ -4,9 +4,18 @@ const Task = require("../model/task");
 const auth = require("../middleware/auth");
 
 router.get("/tasks", auth, async (req, res) => {
+  const match = {};
+  if (req.query.completed) {
+    match.completed = req.query.completed === "true";
+  }
   try {
     // const tasks = await Task.find({});
-    await req.user.populate("tasks").execPopoulate();
+    await req.user
+      .populate({
+        path: "tasks",
+        match,
+      })
+      .execPopoulate();
     res.status(200).send(req.user.tasks);
   } catch (e) {
     res.status(500).send(e);
