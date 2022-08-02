@@ -7,6 +7,16 @@ const multer = require("multer");
 
 const upload = multer({
   dest: "images",
+  limits: {
+    fileSize: 200000,
+  },
+  fileFilter(req, file, cb) {
+    // if (!file.originalname.endsWith(".pdf")) {
+    if (!file.originalname.match(/\.(doc|docx)$/)) {
+      return cb(new Error("Please upload doc"));
+    }
+    cb(undefined, true);
+  },
 });
 
 router.post("/users/login", async (req, res) => {
