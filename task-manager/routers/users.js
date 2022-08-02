@@ -3,6 +3,11 @@ const router = express.Router();
 const User = require("../model/user");
 const jwt = require("jsonwebtoken");
 const auth = require("../middleware/auth");
+const multer = require("multer");
+
+const upload = multer({
+  dest: "images",
+});
 
 router.post("/users/login", async (req, res) => {
   try {
@@ -127,6 +132,10 @@ router.delete("/users/me", auth, async (req, res) => {
   } catch (e) {
     res.status(500).send();
   }
+});
+
+router.post("/users/me/avatar", upload.single("avatar"), (req, res) => {
+  res.send();
 });
 
 module.exports = router;
